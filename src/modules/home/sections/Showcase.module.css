@@ -1,0 +1,22 @@
+
+.section {
+  padding: var(--space-8) 0;
+  background: var(--color-gray-100);
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.media {
+  background: var(--color-black);
+  height: 300px;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}

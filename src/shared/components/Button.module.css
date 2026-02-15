@@ -1,0 +1,14 @@
+
+.button {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  transition: transform var(--duration-base) var(--ease-standard),
+              opacity var(--duration-base) var(--ease-standard);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}

@@ -1,0 +1,35 @@
+@import "./tokens.css";
+@import "./animations.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-white);
+  color: var(--color-black);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+main {
+  padding-top: var(--navbar-height);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
