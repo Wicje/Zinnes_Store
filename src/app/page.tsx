@@ -1,17 +1,17 @@
-import Navbar from "@/modules/layout/Navbar";
-import Hero from "@/modules/home/sections/Hero";
-import Features from "@/modules/home/sections/Features";
-import Showcase from "@/modules/home/sections/Showcase";
+import Hero from "@/modules/home/hero/Hero";
+import NewDrops from "@/modules/home/new-drops/NewDrops";
+import SplitPromo from "@/modules/home/split-promo/SplitPromo";
+import Elevate from "@/modules/home/elevate/Elevate";
+import FeaturedDrops from "@/modules/home/featured/FeaturedDrops";
 
 export default function HomePage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <Showcase />
-      </main>
+      <Hero />
+      <NewDrops />
+      <SplitPromo />
+      <Elevate />
+      <FeaturedDrops />
     </>
   );
 }

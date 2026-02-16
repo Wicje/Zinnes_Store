@@ -1,16 +1,17 @@
-import "../shared/styles/globals.css";
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
+import "./globals.css";
+import Navbar from "@/modules/layout/Navbar";
+import Footer from "@/modules/layout/Footer";
+import { ReactNode } from "react";
 
 export const metadata = {
-  title: "E-Commerc Site",
-  description: "Black & white modular build"
+  title: "Rawblox",
+  description: "Streetwear Ecommerce"
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="en">

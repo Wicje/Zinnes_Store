@@ -1,0 +1,45 @@
+
+.section {
+  padding: 120px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.leftImage {
+  height: 450px;
+  border-radius: 28px;
+  background: url("/promo1.jpg") center/cover no-repeat;
+}
+
+.rightCard {
+  background: black;
+  color: white;
+  border-radius: 28px;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rightCard h2 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.rightCard p {
+  margin: 20px 0;
+  color: #ccc;
+}
+
+.rightCard button {
+  align-self: flex-start;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}

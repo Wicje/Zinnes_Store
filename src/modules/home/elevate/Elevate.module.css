@@ -1,0 +1,42 @@
+
+.section {
+  padding: 120px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.textCard {
+  background: #f3f3f3;
+  border-radius: 28px;
+  padding: 60px 40px;
+}
+
+.textCard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.textCard p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.textCard button {
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.image {
+  height: 450px;
+  border-radius: 28px;
+  background: url("/promo2.jpg") center/cover no-repeat;
+}
