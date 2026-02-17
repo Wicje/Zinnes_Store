@@ -3,6 +3,7 @@ import NewDrops from "@/modules/home/new-drops/NewDrops";
 import SplitPromo from "@/modules/home/split-promo/SplitPromo";
 import Elevate from "@/modules/home/elevate/Elevate";
 import FeaturedDrops from "@/modules/home/featured/FeaturedDrops";
+import ProductHighlight from "@/modules/home/product-highlight/ProductHighlight";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <SplitPromo />
       <Elevate />
       <FeaturedDrops />
+      <ProductHighlight /> 
     </>
   );
 }
