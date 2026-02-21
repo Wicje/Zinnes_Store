@@ -1,25 +1,32 @@
-import "./globals.css";
-import Navbar from "@/modules/layout/Navbar";
-import Footer from "@/modules/layout/Footer";
-import { ReactNode } from "react";
+// app/layout.tsx
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import '../styles/globals.css'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import { ProductProvider } from '@/context/ProductContext'
 
-export const metadata = {
-  title: "Rawblox",
-  description: "Streetwear Ecommerce"
-};
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'TOTEME | Designed with Intention',
+  description: 'Luxury minimal e-commerce experience',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={inter.className}>
+        <ProductProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </ProductProvider>
       </body>
     </html>
-  );
+  )
 }

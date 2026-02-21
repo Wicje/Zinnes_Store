@@ -1,3 +1,27 @@
+
+## Architecture
+```bash
+app/
+ ├── layout.tsx
+ ├── page.tsx
+ ├── globals.css
+components/
+ ├── Navigation.tsx
+ ├── Navigation.css
+ ├── Collection.tsx
+ ├── Collection.css
+ ├── Hero.tsx
+ ├── Hero.css
+ ├── NewArrivals.tsx
+ ├── NewArrivals.css
+ ├── Footer.tsx
+ ├── Footer.css
+context/
+ ├── ProductContext.tsx
+lib/
+ ├── whatsapp.tsx
+ ```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

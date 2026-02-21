@@ -1,0 +1,120 @@
+.collection-section {
+  background: #f3f3f3;
+  padding: 140px 60px;
+}
+
+/* ================= HEADER ================= */
+
+.collection-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.bg-title {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 180px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: rgba(0,0,0,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.collection-desc {
+  max-width: 620px;
+  margin: 25px auto 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+/* ================= SUB NAV ================= */
+
+.collection-subnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 70px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.subnav-right {
+  display: flex;
+  gap: 35px;
+}
+
+.subnav-right span {
+  cursor: pointer;
+  color: #777;
+}
+
+.subnav-right .active {
+  color: #000;
+}
+
+/* ================= GRID ================= */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px 40px;
+}
+
+.product-card {
+  cursor: pointer;
+}
+
+.image-wrapper {
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.product-info {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ================= PAGINATION ================= */
+
+.pagination {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #777;
+}
+
+.pagination .active-page {
+  color: #000;
+  font-weight: 600;
+}

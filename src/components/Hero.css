@@ -1,0 +1,117 @@
+.hero-section {
+  background: #111;
+  color: #fff;
+  padding: 140px 60px;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline-wrapper {
+  position: relative;
+  text-align: center;
+  margin-bottom: 160px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+}
+
+.timeline-left,
+.timeline-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+}
+
+.timeline-left {
+  left: 0;
+}
+
+.timeline-right {
+  right: 0;
+}
+
+.timeline-center {
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-top {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ================= FRAME ================= */
+
+.frame {
+  display: inline-block;
+  padding: 25px;
+  border: 2px solid #fff;
+}
+
+.inner-frame {
+  position: relative;
+  border: 2px solid #fff;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 520px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* ================= BRAND STATEMENT ================= */
+
+.brand-statement {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.brand-statement h1 {
+  font-size: 72px;
+  letter-spacing: 6px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.icon-dot {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  vertical-align: middle;
+}
+
+.brand-statement p {
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+}

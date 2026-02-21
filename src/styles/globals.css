@@ -1,0 +1,62 @@
+/* ================= RESET ================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input {
+  outline: none;
+  font-family: inherit;
+}
+
+/* ================= TYPOGRAPHY SCALE ================= */
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* ================= LAYOUT CONTAINER ================= */
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}

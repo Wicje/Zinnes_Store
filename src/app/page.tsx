@@ -1,19 +1,25 @@
-import Hero from "@/modules/home/hero/Hero";
-import NewDrops from "@/modules/home/new-drops/NewDrops";
-import SplitPromo from "@/modules/home/split-promo/SplitPromo";
-import Elevate from "@/modules/home/elevate/Elevate";
-import FeaturedDrops from "@/modules/home/featured/FeaturedDrops";
-import ProductHighlight from "@/modules/home/product-highlight/ProductHighlight";
+'use client'
 
-export default function HomePage() {
+import { motion } from 'framer-motion'
+import Collection from '@/components/Collection'
+import Hero from '@/components/Hero'
+import NewArrivals from '@/components/NewArrivals'
+
+const pageVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.5 } },
+}
+
+export default function Home() {
   return (
-    <>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      variants={pageVariants}
+    >
+      <Collection />
       <Hero />
-      <NewDrops />
-      <SplitPromo />
-      <Elevate />
-      <FeaturedDrops />
-      <ProductHighlight /> 
-    </>
-  );
+      <NewArrivals />
+    </motion.main>
+  )
 }
