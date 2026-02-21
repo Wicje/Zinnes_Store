@@ -13,9 +13,10 @@ export default function Collection() {
       
       {/* Header */}
       <div className="collection-header">
-        <span className="bg-title">THE STUDIO</span>
+        <span className="bg-title">THE BRAND</span>
         <h1 className="main-title">OUR COLLECTION</h1>
         <p className="collection-desc">
+          ...... <br />
           EACH COLLECTION IS DEVELOPED AS PART OF A WIDER SYSTEM. 
           GARMENTS ARE DESIGNED TO COEXIST—SUPPORTING MODERN LIFE 
           THROUGH FORM, MATERIAL, AND BALANCE.

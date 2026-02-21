@@ -2,7 +2,7 @@ export const sendToWhatsApp = (
   productName: string,
   price: string
 ) => {
-  const phone = "234XXXXXXXXXX" // replace with your number
+  const phone = "2349135536900" // replace with your number
 
   const message = `Hello, I'm interested in ${productName} (${price}).`
 

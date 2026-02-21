@@ -12,7 +12,7 @@ export default function Navigation() {
         </div>
 
         <div className="nav-logo">
-          TOTEME
+          ZINNE
         </div>
 
         <div className="nav-right">
