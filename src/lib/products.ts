@@ -47,3 +47,19 @@ export async function insertProduct(product: {
 
   return data;
 }
+
+export async function uploadProductImage(file: File) {
+  const fileName = `${Date.now()}-${file.name}`
+
+  const { data, error } = await supabase.storage
+    .from("product-images")
+    .upload(fileName, file)
+
+  if (error) throw error
+
+  const { data: publicUrl } = supabase.storage
+    .from("product-images")
+    .getPublicUrl(fileName)
+
+  return publicUrl.publicUrl
+}
