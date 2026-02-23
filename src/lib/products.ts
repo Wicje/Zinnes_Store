@@ -3,7 +3,7 @@ import { supabase } from "./supabase";
 export async function getProducts() {
   const { data, error } = await supabase
     .from("products")
-.select("id, name, price, image_url, category, is_new, created_at")
+    .select("id, name, description, price, image_url, category, is_new, stock")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -11,7 +11,16 @@ export async function getProducts() {
     return [];
   }
 
-  return data;
+  return data.map((p) => ({
+    id: p.id,
+    name: p.name,
+    description: p.description,
+    price: p.price,
+    image: p.image_url,
+    category: p.category,
+    isNew: p.is_new,
+    stock: p.stock,
+  }));
 }
 
 export async function getNewArrivals() {
