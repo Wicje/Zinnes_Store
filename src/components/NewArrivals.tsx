@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import './NewArrivals.css'
-import { useProducts } from '@/context/ProductContext'
 import { sendToWhatsApp } from '@/lib/whatsapp'
 
 export default function NewArrivals() {

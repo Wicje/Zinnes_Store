@@ -58,17 +58,25 @@ export async function insertProduct(product: {
 }
 
 export async function uploadProductImage(file: File) {
+  if (!file.type.startsWith('image/')) {
+    throw new Error('File must be an image')
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    throw new Error('Image must be less than 2MB')
+  }
+
   const fileName = `${Date.now()}-${file.name}`
 
-  const { data, error } = await supabase.storage
-    .from("product-images")
+  const { error } = await supabase.storage
+    .from('product-images')
     .upload(fileName, file)
 
   if (error) throw error
 
-  const { data: publicUrl } = supabase.storage
-    .from("product-images")
+  const { data } = supabase.storage
+    .from('product-images')
     .getPublicUrl(fileName)
 
-  return publicUrl.publicUrl
+  return data.publicUrl
 }
