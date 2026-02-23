@@ -3,8 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'placehold.co',
+
+  protocol: 'https',
+  hostname: 'YOUR_PROJECT_ID.supabase.co',
+
       },
     ],
   },

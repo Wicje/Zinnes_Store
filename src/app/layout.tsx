@@ -5,7 +5,6 @@ import '../styles/globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { ProductProvider } from '@/context/ProductContext'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
