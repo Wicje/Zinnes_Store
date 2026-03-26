@@ -1,82 +1,15 @@
-import { supabase } from "./supabase";
+import type { Product } from '@/context/ProductContext'
+
+const products: Product[] = [
+  { id: 'p1', name: 'Structured Coat', price: 325, image: '/collect-1.jpg', category: 'Ready to wear', isNew: true },
+  { id: 'p2', name: 'Wool Trousers', price: 210, image: '/collect-2.jpg', category: 'Ready to wear' },
+  { id: 'p3', name: 'Silk Dress', price: 280, image: '/collect-3.jpg', category: 'Ready to wear', isNew: true },
+]
 
 export async function getProducts() {
-  const { data, error } = await supabase
-    .from("products")
-    .select("id, name, description, price, image_url, category, is_new, stock")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error(error);
-    return [];
-  }
-
-  return data.map((p) => ({
-    id: p.id,
-    name: p.name,
-    description: p.description,
-    price: p.price,
-    image: p.image_url,
-    category: p.category,
-    isNew: p.is_new,
-    stock: p.stock,
-  }));
+  return products
 }
 
 export async function getNewArrivals() {
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("is_new", true);
-
-  if (error) {
-    console.error(error);
-    return [];
-  }
-
-  return data;
-}
-
-export async function insertProduct(product: {
-  name: string;
-  description: string;
-  price: number;
-  image_url: string;
-  category: string;
-  is_new?: boolean;
-}) {
-  const { data, error } = await supabase
-    .from("products")
-    .insert([product]);
-
-  if (error) {
-    console.error(error);
-    throw error;
-  }
-
-  return data;
-}
-
-export async function uploadProductImage(file: File) {
-  if (!file.type.startsWith('image/')) {
-    throw new Error('File must be an image')
-  }
-
-  if (file.size > 2 * 1024 * 1024) {
-    throw new Error('Image must be less than 2MB')
-  }
-
-  const fileName = `${Date.now()}-${file.name}`
-
-  const { error } = await supabase.storage
-    .from('product-images')
-    .upload(fileName, file)
-
-  if (error) throw error
-
-  const { data } = supabase.storage
-    .from('product-images')
-    .getPublicUrl(fileName)
-
-  return data.publicUrl
+  return products.filter((product) => product.isNew)
 }
