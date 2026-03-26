@@ -42,6 +42,11 @@ export default function Navigation() {
               <Link href="/register">REGISTER</Link>
             </>
           )}
+        <div className="nav-logo">ZINNE</div>
+
+        <div className="nav-right">
+          <Link href="/login">LOGIN</Link>
+          <Link href="/register">REGISTER</Link>
           <button onClick={toggleCart}>CART ({count})</button>
         </div>
       </div>

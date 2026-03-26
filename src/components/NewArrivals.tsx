@@ -30,6 +30,14 @@ export default function NewArrivals() {
                 <span>${product.price}</span>
               </div>
             </Link>
+            <div className="new-image-wrapper">
+              <Image src={product.image} alt={product.name} width={600} height={900} />
+            </div>
+
+            <div className="new-info">
+              <span>{product.name}</span>
+              <span>${product.price}</span>
+            </div>
             <button className="add-to-cart" onClick={() => addToCart(product)}>
               Add to cart
             </button>

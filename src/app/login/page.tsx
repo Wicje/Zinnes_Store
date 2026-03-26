@@ -8,6 +8,10 @@ import { isAdminCredentials, setSessionUser } from '@/lib/auth'
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
+import { useRouter } from 'next/navigation'
+
+export default function LoginPage() {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -30,6 +34,7 @@ export default function LoginPage() {
     }
 
     setSessionUser({ email: match.email, name: match.name, role: 'user' })
+    localStorage.setItem('session_user', JSON.stringify({ email: match.email, name: match.name }))
     router.push('/')
   }
 

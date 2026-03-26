@@ -1,3 +1,4 @@
+
 export interface Product {
   id: string
   name: string
@@ -72,4 +73,5 @@ export async function getNewArrivals() {
 
 export function getProductById(id: string) {
   return PRODUCTS.find((product) => product.id === id)
+
 }

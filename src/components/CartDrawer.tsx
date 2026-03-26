@@ -14,6 +14,7 @@ export default function CartDrawer() {
   const removeFromCart = useCartStore((state) => state.removeFromCart)
   const clearCart = useCartStore((state) => state.clearCart)
 
+  const { cart, isOpen, toggleCart, addToCart, decreaseFromCart, removeFromCart, clearCart } = useCartStore()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
 

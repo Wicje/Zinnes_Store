@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from 'react'
 import type { Product } from '@/lib/products'
+import type { Product } from '@/context/ProductContext'
 
 export interface CartItem extends Product {
   quantity: number
