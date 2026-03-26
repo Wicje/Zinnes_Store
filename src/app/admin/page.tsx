@@ -1,87 +1,37 @@
 'use client'
 
-import './Admin.css'
-import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabase'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { clearSessionUser, getSessionUser } from '@/lib/auth'
 
-export default function Admin() {
-  const [orders, setOrders] = useState([])
+export default function AdminPage() {
+  const router = useRouter()
+  const user = getSessionUser()
+  const isAdmin = user?.role === 'admin'
 
   useEffect(() => {
-    fetchOrders()
-  }, [])
+    if (!isAdmin) {
+      router.replace('/login?next=admin')
+    }
+  }, [isAdmin, router])
 
-  async function fetchOrders() {
-    const { data } = await supabase
-      .from('orders')
-      .select(`
-        *,
-        order_items (
-          *,
-          products (*)
-        )
-      `)
-
-    setOrders(data || [])
+  if (!isAdmin) {
+    return <main style={{ maxWidth: 960, margin: '40px auto', padding: 20 }}>Checking admin access...</main>
   }
-
-  async function updateStatus(orderId: string, status: string) {
-    await supabase
-      .from('orders')
-      .update({ status })
-      .eq('id', orderId)
-
-    fetchOrders()
-  }
-
-  const { data: { user } } = await supabase.auth.getUser()
-
-if (!user) {
-  router.push('/login')
-}
 
   return (
-
-    if (user.email !== "joseloper17@gmail.com") {
-  router.push('/')
-}
-
-    <div className="admin-container">
-      <h1 className="admin-title">Admin Dashboard</h1>
-
-      {orders.map((order: any) => (
-        <div key={order.id} className="order-card">
-          <div className="order-header">
-            <strong>Order: {order.id}</strong>
-            <span>Total: ₦{order.total_amount}</span>
-          </div>
-
-          <div>
-            Customer: {order.customer_name} <br />
-            Phone: {order.customer_phone}
-          </div>
-
-          <div className="order-items">
-            {order.order_items.map((item: any) => (
-              <div key={item.id} className="order-item">
-                {item.quantity}x {item.products.name}
-              </div>
-            ))}
-          </div>
-
-          <select
-            className="status-select"
-            value={order.status}
-            onChange={(e) =>
-              updateStatus(order.id, e.target.value)
-            }
-          >
-            <option value="pending">Pending</option>
-            <option value="paid">Paid</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
-        </div>
-      ))}
-    </div>
+    <main style={{ maxWidth: 960, margin: '40px auto', padding: 20 }}>
+      <h1>Admin Dashboard</h1>
+      <p>Welcome admin. This area is protected by hardcoded admin credentials.</p>
+      <button
+        style={{ marginTop: 16, background: '#111', color: '#fff', padding: '10px 16px' }}
+        onClick={() => {
+          clearSessionUser()
+          router.push('/login')
+        }}
+      >
+        Logout admin
+      </button>
+    </main>
   )
 }

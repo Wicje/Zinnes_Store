@@ -60,3 +60,11 @@ p {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+
+.add-to-cart {
+  margin-top: 10px;
+  background: #111;
+  color: #fff;
+  padding: 8px 12px;
+}
