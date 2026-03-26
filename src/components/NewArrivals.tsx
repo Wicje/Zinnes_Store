@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import './NewArrivals.css'
 import { useProducts } from '@/context/ProductContext'
 import { useCartStore } from '@/lib/useCartStore'
@@ -19,6 +20,16 @@ export default function NewArrivals() {
       <div className="new-grid">
         {newProducts.map((product) => (
           <div key={product.id} className="new-card">
+            <Link href={`/products/${product.id}`}>
+              <div className="new-image-wrapper">
+                <Image src={product.image} alt={product.name} width={600} height={900} />
+              </div>
+
+              <div className="new-info">
+                <span>{product.name}</span>
+                <span>${product.price}</span>
+              </div>
+            </Link>
             <div className="new-image-wrapper">
               <Image src={product.image} alt={product.name} width={600} height={900} />
             </div>

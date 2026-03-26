@@ -1,6 +1,7 @@
 'use client'
 
 import { useSyncExternalStore } from 'react'
+import type { Product } from '@/lib/products'
 import type { Product } from '@/context/ProductContext'
 
 export interface CartItem extends Product {
@@ -51,6 +52,9 @@ const actions = {
   },
   removeFromCart(id: string) {
     setState({ ...state, cart: state.cart.filter((item) => item.id !== id) })
+  },
+  getItemQuantity(id: string) {
+    return state.cart.find((item) => item.id === id)?.quantity ?? 0
   },
   toggleCart() {
     setState({ ...state, isOpen: !state.isOpen })

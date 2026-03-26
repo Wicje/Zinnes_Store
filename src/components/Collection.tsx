@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import './Collection.css'
 import { useProducts } from '@/context/ProductContext'
 import { useCartStore } from '@/lib/useCartStore'
@@ -23,6 +24,16 @@ export default function Collection() {
       <div className="collection-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card">
+            <Link href={`/products/${product.id}`}>
+              <div className="image-wrapper">
+                <Image src={product.image} alt={product.name} width={600} height={900} className="product-image" />
+              </div>
+
+              <div className="product-info">
+                <span>{product.name}</span>
+                <span>${product.price}</span>
+              </div>
+            </Link>
             <div className="image-wrapper">
               <Image src={product.image} alt={product.name} width={600} height={900} className="product-image" />
             </div>

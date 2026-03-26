@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useMemo } from 'react'
+import { PRODUCTS, type Product } from '@/lib/products'
 
 export interface Product {
   id: string
@@ -24,6 +25,10 @@ interface ProductContextValue {
   products: Product[]
 }
 
+const ProductContext = createContext<ProductContextValue>({ products: PRODUCTS })
+
+export function ProductProvider({ children }: { children: React.ReactNode }) {
+  const value = useMemo(() => ({ products: PRODUCTS }), [])
 const ProductContext = createContext<ProductContextValue>({ products })
 
 export function ProductProvider({ children }: { children: React.ReactNode }) {

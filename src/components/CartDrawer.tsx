@@ -6,6 +6,14 @@ import { useCartStore } from '@/lib/useCartStore'
 import './CartDrawer.css'
 
 export default function CartDrawer() {
+  const cart = useCartStore((state) => state.cart)
+  const isOpen = useCartStore((state) => state.isOpen)
+  const toggleCart = useCartStore((state) => state.toggleCart)
+  const addToCart = useCartStore((state) => state.addToCart)
+  const decreaseFromCart = useCartStore((state) => state.decreaseFromCart)
+  const removeFromCart = useCartStore((state) => state.removeFromCart)
+  const clearCart = useCartStore((state) => state.clearCart)
+
   const { cart, isOpen, toggleCart, addToCart, decreaseFromCart, removeFromCart, clearCart } = useCartStore()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { setSessionUser } from '@/lib/auth'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -21,6 +22,9 @@ export default function RegisterPage() {
       return
     }
 
+    const next = [...users, { name, email: email.toLowerCase(), password }]
+    localStorage.setItem('users', JSON.stringify(next))
+    setSessionUser({ name, email: email.toLowerCase(), role: 'user' })
     const next = [...users, { name, email, password }]
     localStorage.setItem('users', JSON.stringify(next))
     localStorage.setItem('session_user', JSON.stringify({ name, email }))
@@ -29,6 +33,7 @@ export default function RegisterPage() {
 
   return (
     <main style={{ maxWidth: 420, margin: '40px auto', padding: 20 }}>
+      <h1>Registration Portal</h1>
       <h1>Registration</h1>
       <form onSubmit={onSubmit} style={{ display: 'grid', gap: 12, marginTop: 20 }}>
         <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" required />
