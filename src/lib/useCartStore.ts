@@ -1,56 +1,74 @@
+'use client'
 
-import { create } from 'zustand';
+import { useSyncExternalStore } from 'react'
+import type { Product } from '@/lib/products'
 
-// Definimos exactamente qué es un producto para que no haya errores de tipo
-
-interface CartItem {
-  id: string
-  name: string
-  price: number
-  image_url: string
+export interface CartItem extends Product {
   quantity: number
 }
+
 interface CartState {
-  cart: Product[];
-  isOpen: boolean;
-  addToCart: (product: Product) => void;
-  removeFromCart: (id: string) => void;
-  toggleCart: () => void;
-  clearCart: () => void;
+  cart: CartItem[]
+  isOpen: boolean
 }
 
-export const useCartStore = create<CartState>((set) => ({
-  cart: [],
-  isOpen: false,
+let state: CartState = { cart: [], isOpen: false }
+const listeners = new Set<() => void>()
 
-  addToCart: (product) =>
-    set((state) => {
-      const existing = state.cart.find((item) => item.id === product.id);
+function setState(next: CartState) {
+  state = next
+  listeners.forEach((listener) => listener())
+}
 
-      if (existing) {
-        return {
-          cart: state.cart.map((item) =>
-            item.id === product.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          ),
-          isOpen: true,
-        };
-      }
+function subscribe(listener: () => void) {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
+}
 
-      return {
-        cart: [...state.cart, { ...product, quantity: 1 }],
+const actions = {
+  addToCart(product: Product) {
+    const existing = state.cart.find((item) => item.id === product.id)
+    if (existing) {
+      setState({
+        ...state,
         isOpen: true,
-      };
-    }),
+        cart: state.cart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,
+        ),
+      })
+      return
+    }
 
-  removeFromCart: (id) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== id),
-    })),
+    setState({ ...state, isOpen: true, cart: [...state.cart, { ...product, quantity: 1 }] })
+  },
+  decreaseFromCart(id: string) {
+    setState({
+      ...state,
+      cart: state.cart
+        .map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item))
+        .filter((item) => item.quantity > 0),
+    })
+  },
+  removeFromCart(id: string) {
+    setState({ ...state, cart: state.cart.filter((item) => item.id !== id) })
+  },
+  getItemQuantity(id: string) {
+    return state.cart.find((item) => item.id === id)?.quantity ?? 0
+  },
+  toggleCart() {
+    setState({ ...state, isOpen: !state.isOpen })
+  },
+  clearCart() {
+    setState({ ...state, cart: [] })
+  },
+}
 
-  toggleCart: () =>
-    set((state) => ({ isOpen: !state.isOpen })),
+type Store = CartState & typeof actions
 
-  clearCart: () => set({ cart: [] }),
-}));
+function getSnapshot(): Store {
+  return { ...state, ...actions }
+}
+
+export function useCartStore<T>(selector: (store: Store) => T): T {
+  return useSyncExternalStore(subscribe, () => selector(getSnapshot()), () => selector(getSnapshot()))
+}
