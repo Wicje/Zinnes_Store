@@ -25,12 +25,16 @@ export default function RegisterPage() {
     const next = [...users, { name, email: email.toLowerCase(), password }]
     localStorage.setItem('users', JSON.stringify(next))
     setSessionUser({ name, email: email.toLowerCase(), role: 'user' })
+    const next = [...users, { name, email, password }]
+    localStorage.setItem('users', JSON.stringify(next))
+    localStorage.setItem('session_user', JSON.stringify({ name, email }))
     router.push('/')
   }
 
   return (
     <main style={{ maxWidth: 420, margin: '40px auto', padding: 20 }}>
       <h1>Registration Portal</h1>
+      <h1>Registration</h1>
       <form onSubmit={onSubmit} style={{ display: 'grid', gap: 12, marginTop: 20 }}>
         <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" required />
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" required />

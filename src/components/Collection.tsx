@@ -34,6 +34,14 @@ export default function Collection() {
                 <span>${product.price}</span>
               </div>
             </Link>
+            <div className="image-wrapper">
+              <Image src={product.image} alt={product.name} width={600} height={900} className="product-image" />
+            </div>
+
+            <div className="product-info">
+              <span>{product.name}</span>
+              <span>${product.price}</span>
+            </div>
             <button className="add-to-cart" onClick={() => addToCart(product)}>
               Add to cart
             </button>
